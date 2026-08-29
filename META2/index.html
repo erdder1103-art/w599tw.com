@@ -28,32 +28,13 @@
   <p class="note">系統將自動跳轉，請勿關閉此頁面</p>
 </section></main>
 <script>
-(() => {
-  const PIXEL_ID = "1951590302178635";
-  const DESTINATION = "https://w599.tw/link/o3sda";
-  const SITE_KEY = "wang99-meta2";
-  const delay = 2400 + Math.floor(Math.random() * 401);
-  let redirected = false, progress = 8;
-  const destination = new URL(DESTINATION);
-  new URLSearchParams(location.search).forEach((v,k) => { if(!destination.searchParams.has(k)) destination.searchParams.set(k,v); });
-  const makeId = name => {
-    const key = SITE_KEY + ":event:" + name;
-    let id = sessionStorage.getItem(key);
-    if(!id){ id = SITE_KEY + "-" + name + "-" + (crypto.randomUUID ? crypto.randomUUID() : Date.now()+"-"+Math.random()); sessionStorage.setItem(key,id); }
-    return id;
-  };
-  if(sessionStorage.getItem(SITE_KEY + ":sent") !== "1"){
-    sessionStorage.setItem(SITE_KEY + ":sent","1");
-    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
-    fbq("init",PIXEL_ID);
-    fbq("track","PageView",{}, {eventID:makeId("pageview")});
-    fbq("track","Contact",{}, {eventID:makeId("contact")});
-    fbq("track","Lead",{}, {eventID:makeId("lead")});
-  }
-  const timer=setInterval(()=>{progress=Math.min(progress+7,94);document.getElementById("bar").style.width=progress+"%";document.getElementById("percent").textContent=progress+"%";},150);
-  setTimeout(()=>document.getElementById("copy").textContent="即將為您開啟活動頁面",1050);
-  setTimeout(()=>{if(redirected)return;redirected=true;clearInterval(timer);document.getElementById("bar").style.width="100%";document.getElementById("percent").textContent="100%";document.getElementById("copy").textContent="連線完成，正在前往";location.replace(destination.toString());},delay);
-})();
+window.W99_CONFIG={
+  campaign:"meta2",
+  pixelId:"1951590302178635",
+  destination:"https://w599.tw/link/o3sda",
+  workerEndpoint:"https://請替換成你的Worker網址.workers.dev/track/meta2"
+};
 </script>
+<script src="assets/tracker.js"></script>
 </body>
 </html>
