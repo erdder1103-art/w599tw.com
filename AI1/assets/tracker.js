@@ -4,8 +4,8 @@
   var redirected = false;
   var progress = 8;
   var startedAt = Date.now();
-  var redirectAfter = 2700;
-  var hardDeadline = 3400;
+  var redirectAfter = 4500;
+  var hardDeadline = 5200;
 
   function randomId() {
     try {
