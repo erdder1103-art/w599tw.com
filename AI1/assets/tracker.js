@@ -2,10 +2,11 @@
   "use strict";
   var cfg = window.W99_CONFIG;
   var redirected = false;
+  var pixelReady = false;
   var progress = 8;
   var startedAt = Date.now();
-  var redirectAfter = 4500;
-  var hardDeadline = 5200;
+  var redirectAfter = 2700;
+  var hardDeadline = 3400;
 
   function randomId() {
     try {
@@ -63,11 +64,25 @@
     Lead: cfg.campaign + "-ld-" + visit.id
   };
 
-  function sendPixel() {
+  function initPixel() {
+    if (pixelReady) return;
     try {
       !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version="2.0";n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,"script","https://connect.facebook.net/en_US/fbevents.js");
       fbq("init", cfg.pixelId);
+      pixelReady = true;
+    } catch (_) {}
+  }
+
+  function sendPageView() {
+    try {
+      initPixel();
       fbq("track", "PageView", {}, { eventID: ids.PageView });
+    } catch (_) {}
+  }
+
+  function sendConversionPixel() {
+    try {
+      initPixel();
       fbq("track", "Contact", {}, { eventID: ids.Contact });
       fbq("track", "Lead", {}, { eventID: ids.Lead });
     } catch (_) {}
@@ -110,17 +125,20 @@
     document.getElementById("bar").style.width = "100%";
     document.getElementById("percent").textContent = "100%";
     document.getElementById("copy").textContent = "連線完成，正在前往";
-    location.replace(destinationUrl());
+    sendConversionPixel();
+    sendCapi(0);
+    setTimeout(function () {
+      location.replace(destinationUrl());
+    }, 180);
   }
 
-  sendPixel();
-  var capiRequest = sendCapi(0);
+  sendPageView();
   var progressTimer = setInterval(function () {
     progress = Math.min(progress + 7, 94);
     document.getElementById("bar").style.width = progress + "%";
     document.getElementById("percent").textContent = progress + "%";
   }, 150);
   setTimeout(function () { document.getElementById("copy").textContent = "即將為您開啟活動頁面"; }, 1050);
-  setTimeout(function () { capiRequest.then(go); }, redirectAfter);
+  setTimeout(go, redirectAfter);
   setTimeout(go, hardDeadline);
 })();
