@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="theme-color" content="#090b08">
+  <title>電子命理師-阿祥｜AI分析指令</title>
+  <style>
+    :root{--gold:#ffca5c;--amber:#f09122;--jade:#45e6a4;--ink:#080a08;--cream:#fff4d2}
+    *{box-sizing:border-box}html,body{margin:0;min-height:100%;background:var(--ink)}
+    body{font-family:"Microsoft JhengHei","PingFang TC",Arial,sans-serif;color:#fff;overflow-x:hidden}
+    main{position:relative;isolation:isolate;min-height:100svh;display:grid;place-items:center;overflow:hidden;padding:max(15px,env(safe-area-inset-top)) 16px max(15px,env(safe-area-inset-bottom));background:radial-gradient(circle at 50% 22%,rgba(240,145,34,.2),transparent 32%),radial-gradient(circle at 10% 78%,rgba(69,230,164,.13),transparent 31%),linear-gradient(145deg,#030403,#111008 52%,#07150f)}
+    main:before{content:"";position:absolute;z-index:-3;inset:0;opacity:.18;background-image:linear-gradient(30deg,rgba(255,202,92,.15) 1px,transparent 1px),linear-gradient(150deg,rgba(255,202,92,.1) 1px,transparent 1px);background-size:54px 94px;mask-image:radial-gradient(circle at center,#000,transparent 76%)}
+    main:after{content:"";position:absolute;z-index:-2;width:720px;height:720px;border:1px solid rgba(255,202,92,.12);clip-path:polygon(29% 0,71% 0,100% 29%,100% 71%,71% 100%,29% 100%,0 71%,0 29%);box-shadow:inset 0 0 100px rgba(255,202,92,.06);animation:compass 18s linear infinite}
+    .mist{position:absolute;inset:auto -20% -25%;height:48%;background:radial-gradient(ellipse at center,rgba(69,230,164,.15),transparent 68%);filter:blur(22px);animation:breathe 4s ease-in-out infinite}
+    .rune{position:absolute;color:rgba(255,210,113,.22);font-family:serif;font-weight:900;text-shadow:0 0 18px rgba(255,184,51,.45);animation:float 5.5s ease-in-out infinite}.r1{left:7%;top:12%;font-size:34px}.r2{right:8%;top:19%;font-size:28px;animation-delay:-1.5s}.r3{left:11%;bottom:13%;font-size:29px;animation-delay:-3s}.r4{right:10%;bottom:11%;font-size:35px;animation-delay:-4.2s}
+    .shell{position:relative;width:min(468px,100%);padding:18px;border:1px solid rgba(255,202,92,.46);clip-path:polygon(22px 0,calc(100% - 22px) 0,100% 22px,100% calc(100% - 22px),calc(100% - 22px) 100%,22px 100%,0 calc(100% - 22px),0 22px);background:linear-gradient(145deg,rgba(255,202,92,.62),rgba(69,230,164,.26) 35%,rgba(255,202,92,.72));filter:drop-shadow(0 32px 55px rgba(0,0,0,.62))}
+    .panel{position:relative;padding:21px 22px 24px;text-align:center;overflow:hidden;clip-path:inherit;background:linear-gradient(160deg,rgba(20,18,10,.98),rgba(5,11,8,.97) 55%,rgba(10,24,17,.98));box-shadow:inset 0 0 55px rgba(255,202,92,.05)}
+    .panel:before{content:"";position:absolute;inset:9px;border:1px solid rgba(255,202,92,.14);clip-path:inherit;pointer-events:none}.panel:after{content:"";position:absolute;left:-30%;top:-20%;width:38%;height:145%;background:linear-gradient(90deg,transparent,rgba(255,240,190,.13),transparent);transform:rotate(13deg);animation:sweep 4.8s ease-in-out infinite;pointer-events:none}
+    .system{display:inline-flex;align-items:center;gap:9px;margin-bottom:12px;color:#b6f9d9;font-size:10px;font-weight:900;letter-spacing:.23em}.system:before,.system:after{content:"";width:34px;height:1px;background:linear-gradient(90deg,transparent,var(--jade))}.system:after{transform:scaleX(-1)}.system i{width:7px;height:7px;border-radius:50%;background:var(--jade);box-shadow:0 0 13px var(--jade);animation:blink 1.2s infinite}
+    .visual{position:relative;width:210px;height:210px;margin:0 auto 18px;display:grid;place-items:center}
+    .dial,.dial:before{position:absolute;content:"";inset:0;clip-path:polygon(29% 0,71% 0,100% 29%,100% 71%,71% 100%,29% 100%,0 71%,0 29%);background:conic-gradient(from 22.5deg,var(--gold),transparent 8%,var(--jade) 20%,transparent 29%,var(--gold) 45%,transparent 58%,var(--jade) 72%,transparent 84%,var(--gold));animation:compass 10s linear infinite;filter:drop-shadow(0 0 9px rgba(255,190,65,.45))}
+    .dial:before{inset:8px;background:#111008;animation:none}.portrait-box{position:relative;width:184px;height:184px;overflow:hidden;clip-path:polygon(25% 0,75% 0,100% 25%,100% 75%,75% 100%,25% 100%,0 75%,0 25%);background:#000}.portrait{width:100%;height:100%;display:block;object-fit:cover}.scan{position:absolute;z-index:2;left:0;right:0;height:2px;top:-4%;background:linear-gradient(90deg,transparent,var(--jade),#fff,var(--jade),transparent);box-shadow:0 0 13px var(--jade);animation:scan 3.2s ease-in-out infinite}
+    .brand{margin:0;color:var(--cream);font-size:clamp(30px,8.8vw,44px);line-height:1.1;font-weight:950;letter-spacing:.035em;text-shadow:0 5px 24px #000}.brand .name{color:var(--gold);text-shadow:0 0 16px rgba(255,184,51,.38)}
+    .seal{display:flex;align-items:center;gap:10px;margin:13px 0;color:rgba(255,238,199,.45);font-size:10px;font-weight:700;letter-spacing:.2em}.seal:before,.seal:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,transparent,rgba(255,202,92,.48))}.seal:after{transform:scaleX(-1)}
+    h1{margin:0;font-size:clamp(35px,10.5vw,51px);line-height:1.07;font-weight:950;letter-spacing:-.05em;text-shadow:0 6px 25px #000}h1 .ai{display:inline-block;margin-left:.08em;padding:.01em .17em .08em;color:#101207;background:linear-gradient(145deg,#fff3b9,var(--gold) 53%,var(--amber));clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px);box-shadow:0 0 28px rgba(255,190,65,.3);animation:power 2s ease-in-out infinite}h1 .accent{display:block;margin-top:4px;background:linear-gradient(90deg,#fff3c7,var(--gold) 35%,#82f2c7 70%,#fff5d5);background-size:210% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 2.8s linear infinite}
+    .copy{margin:20px 0 11px;color:#eaddbc;font-size:14px;font-weight:800;letter-spacing:.07em}.track{height:10px;overflow:hidden;border:1px solid rgba(255,202,92,.18);border-radius:2px;background:rgba(255,255,255,.05);box-shadow:inset 0 2px 8px #000}.bar{height:100%;width:8%;transition:width .2s ease;background:linear-gradient(90deg,var(--amber),var(--gold) 55%,var(--jade));box-shadow:0 0 17px var(--gold)}
+    .status{display:flex;align-items:center;justify-content:space-between;margin-top:10px;color:rgba(242,226,187,.55);font-size:12px}.status span{display:flex;align-items:center;gap:7px}.dot{width:7px;height:7px;border-radius:50%;background:var(--jade);box-shadow:0 0 11px var(--jade);animation:blink 1.2s infinite}.percent{color:var(--gold);font-weight:900}.note{margin:18px 0 0;padding-top:15px;border-top:1px solid rgba(255,202,92,.12);color:rgba(242,226,187,.35);font-size:11px}
+    @keyframes compass{to{transform:rotate(360deg)}}@keyframes scan{0%,8%{top:-4%;opacity:0}18%{opacity:1}82%{opacity:1}92%,100%{top:104%;opacity:0}}@keyframes sweep{0%,30%{left:-45%}72%,100%{left:120%}}@keyframes shine{to{background-position:210% center}}@keyframes power{50%{filter:brightness(1.25);transform:translateY(-2px)}}@keyframes blink{50%{opacity:.3;transform:scale(.7)}}@keyframes float{50%{transform:translateY(-16px) rotate(5deg);opacity:.45}}@keyframes breathe{50%{opacity:.52;transform:scale(1.08)}}
+    @media(max-width:480px){.shell{padding:12px}.panel{padding:18px 17px 21px}.visual{width:178px;height:178px;margin-bottom:14px}.portrait-box{width:156px;height:156px}.brand{font-size:clamp(29px,8.8vw,39px)}h1{font-size:clamp(35px,10.8vw,47px)}}@media(max-height:700px){.shell{padding:10px}.panel{padding-top:14px;padding-bottom:16px}.system{margin-bottom:7px}.visual{width:132px;height:132px;margin-bottom:10px}.portrait-box{width:116px;height:116px}.seal{margin:8px 0}.copy{margin-top:12px}.note{margin-top:11px;padding-top:10px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important}}
+  </style>
+</head>
+<body>
+  <main>
+    <div class="mist" aria-hidden="true"></div><i class="rune r1">天</i><i class="rune r2">命</i><i class="rune r3">運</i><i class="rune r4">吉</i>
+    <div class="shell"><section class="panel" aria-label="電子命理師阿祥 AI 分析入口">
+      <div class="system"><i></i>AI 命盤運算系統</div>
+      <div class="visual"><div class="dial"></div><div class="portrait-box"><img class="portrait" src="assets/wang99-logo.png" alt="電子命理師阿祥"><span class="scan"></span></div></div>
+      <p class="brand">電子命理師－<span class="name">阿祥</span></p>
+      <div class="seal">東方命理 × AI 智慧解析</div>
+      <h1>私訊領取<span class="ai">AI</span><span class="accent">分析指令</span></h1>
+      <p class="copy" id="copy">正在建立專屬命盤連線</p>
+      <div class="track" role="progressbar" aria-label="連線進度"><div class="bar" id="bar"></div></div>
+      <div class="status"><span><i class="dot"></i>命盤資料驗證中</span><b class="percent" id="percent">8%</b></div>
+      <p class="note">分析完成後將自動前往，請勿關閉此頁面</p>
+    </section></div>
+  </main>
+  <script>
+    window.W99_CONFIG={
+      campaign:"ai1",
+      pixelId:"1060719463221530",
+      destination:"https://lin.ee/nzHRw62g",
+      workerEndpoint:"https://wang99-meta-capi.skype138388.workers.dev/track/ai1"
+    };
+  </script>
+  <script src="assets/tracker.js"></script>
+</body>
+</html>
